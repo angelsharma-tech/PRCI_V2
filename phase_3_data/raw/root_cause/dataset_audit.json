@@ -1,0 +1,14 @@
+{
+  "source": "mhealth-intake",
+  "migration_date": "2026-02-19",
+  "num_samples": 60,
+  "num_labels": 5,
+  "label_names": ["perfectionism", "fear_of_failure", "lack_of_interest", "environment_distraction", "dopamine_addiction"],
+  "duplicates_removed": false,
+  "schema_verified": true,
+  "source_file": "rc_val_manual.csv",
+  "target_file": "root_cause_raw_v1.csv",
+  "data_type": "multi_label_binary",
+  "text_column": "text",
+  "label_format": "binary_0_1"
+}

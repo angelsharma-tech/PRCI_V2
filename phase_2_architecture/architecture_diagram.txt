@@ -1,0 +1,122 @@
+PRCI v2.0 - System Architecture Diagram
+==========================================
+
+                    ┌─────────────────────────────────────┐
+                    │          USER INTERFACES           │
+                    │  ┌─────────────┐  ┌─────────────┐   │
+                    │  │   Web UI    │  │  Mobile App │   │
+                    │  │  Dashboard  │  │   Interface │   │
+                    │  └─────────────┘  └─────────────┘   │
+                    └─────────────────────┬───────────────┘
+                                          │
+                                          │ User Input & Behavioral Data
+                                          │ (Text, Activity Logs, Preferences)
+                                          ▼
+                    ┌─────────────────────────────────────┐
+                    │        DASHBOARD LAYER              │
+                    │  ┌─────────────┐  ┌─────────────┐   │
+                    │  │   Analytics │  │   Reports   │   │
+                    │  │  Display    │  │ Generation  │   │
+                    │  └─────────────┘  └─────────────┘   │
+                    │  ┌─────────────┐  ┌─────────────┐   │
+                    │  │  User       │  │ Intervention │   │
+                    │  │ Preferences │  │   Display   │   │
+                    │  └─────────────┘  └─────────────┘   │
+                    └─────────────────────┬───────────────┘
+                                          │
+                                          │ Processed Data & User Feedback
+                                          ▼
+                    ┌─────────────────────────────────────┐
+                    │     PERSONALIZATION LAYER           │
+                    │  ┌─────────────┐  ┌─────────────┐   │
+                    │  │   User      │  │   Feedback  │   │
+                    │  │  Profiling  │  │   Analysis  │   │
+                    │  └─────────────┘  └─────────────┘   │
+                    │  ┌─────────────┐  ┌─────────────┐   │
+                    │  │ Adaptive    │  │ Preference  │   │
+                    │  │  Learning   │  │  Weighting  │   │
+                    │  └─────────────┘  └─────────────┘   │
+                    └─────────────────────┬───────────────┘
+                                          │
+                                          │ Personalized Parameters & Adaptations
+                                          ▼
+                    ┌─────────────────────────────────────┐
+                    │     INTERVENTION ENGINE              │
+                    │  ┌─────────────┐  ┌─────────────┐   │
+                    │  │   Context  │  │   Strategy  │   │
+                    │  │   Analysis  │  │ Selection   │   │
+                    │  └─────────────┘  └─────────────┘   │
+                    │  ┌─────────────┐  ┌─────────────┐   │
+                    │  │   Ethical   │  │ Intervention│   │
+                    │  │   Filter    │  │ Generation  │   │
+                    │  └─────────────┘  └─────────────┘   │
+                    └─────────────────────┬───────────────┘
+                                          │
+                                          │ Risk Level & Root Causes
+                                          ▼
+                    ┌─────────────────────────────────────┐
+                    │       RISK ENGINE                   │
+                    │  ┌─────────────┐  ┌─────────────┐   │
+                    │  │   Temporal  │  │    Risk     │   │
+                    │  │ Aggregation │  │  Scoring    │   │
+                    │  └─────────────┘  └─────────────┘   │
+                    │  ┌─────────────┐  ┌─────────────┐   │
+                    │  │  Threshold  │  │   Trend     │   │
+                    │  │ Analysis    │  │ Detection   │   │
+                    │  └─────────────┘  └─────────────┘   │
+                    └─────────────────────┬───────────────┘
+                                          │
+                                          │ Detection Results History
+                                          ▼
+                    ┌─────────────────────────────────────┐
+                    │      DETECTION LAYER                │
+                    │  ┌─────────────┐  ┌─────────────┐   │
+                    │  │   Text      │  │  Behavioral │   │
+                    │  │  Analysis   │  │ Pattern     │   │
+                    │  │             │  │ Recognition │   │
+                    │  └─────────────┘  └─────────────┘   │
+                    │  ┌─────────────┐  ┌─────────────┐   │
+                    │  │   Emotion   │  │   Root      │   │
+                    │  │ Detection   │  │   Cause     │   │
+                    │  │             │  │ Analysis    │   │
+                    │  └─────────────┘  └─────────────┘   │
+                    └─────────────────────┬───────────────┘
+                                          │
+                                          │ Raw User Data
+                                          ▼
+                    ┌─────────────────────────────────────┐
+                    │        DATA LAYER                    │
+                    │  ┌─────────────┐  ┌─────────────┐   │
+                    │  │   User      │  │  Activity   │   │
+                    │  │   Input     │  │    Logs     │   │
+                    │  │ Collection  │  │ Collection  │   │
+                    │  └─────────────┘  └─────────────┘   │
+                    │  ┌─────────────┐  ┌─────────────┐   │
+                    │  │   Data      │  │    Privacy  │   │
+                    │  │  Storage    │  │  Controls   │   │
+                    │  └─────────────┘  └─────────────┘   │
+                    └─────────────────────────────────────┘
+
+Closed-Loop Feedback Flow:
+==========================
+
+1. User Input → Detection → Risk → Intervention → Dashboard
+2. User Feedback → Personalization → Adaptation Loop
+3. Continuous Learning and Improvement
+
+Data Flow Summary:
+==================
+
+INPUT: User text, behavioral patterns, academic context
+PROCESSING: ML analysis → Risk scoring → Strategy selection
+OUTPUT: Personalized interventions with ethical validation
+FEEDBACK: User response → System adaptation → Improved accuracy
+
+Key Architectural Principles:
+=============================
+
+- Modular Design: Independent, replaceable components
+- Closed-Loop Learning: Continuous improvement through feedback
+- Ethical Boundaries: Non-clinical, user-autonomous interventions
+- Scalable Architecture: Microservices-based deployment
+- Privacy-First: Data protection and user consent mechanisms

@@ -1,0 +1,97 @@
+{
+  "audit_summary": {
+    "audit_date": "2026-02-19T15:39:00.000Z",
+    "repository": "mhealth-intake",
+    "objective": "Complete audit of root-cause related datasets",
+    "total_datasets_found": 14,
+    "root_cause_datasets": 1,
+    "related_mental_health_datasets": 13
+  },
+  "root_cause_datasets": [
+    {
+      "file_path": "F:/sem8/mhealth-intake/data/processed/rc_val_manual.csv",
+      "file_type": "CSV",
+      "num_samples": 60,
+      "available_labels": ["perfectionism", "fear_of_failure", "lack_of_interest", "environment_distraction", "dopamine_addiction"],
+      "label_type": "multi_label_binary",
+      "labeled_status": "fully_labeled",
+      "notes": "Primary root cause dataset with 5 binary labels, already migrated to PRCI_v2"
+    }
+  ],
+  "related_mental_health_datasets": [
+    {
+      "file_path": "F:/sem8/mhealth-intake/data/processed/anxiety_clean.csv",
+      "file_type": "CSV",
+      "num_samples": 3717,
+      "available_labels": [0, 1],
+      "label_type": "binary_classification",
+      "labeled_status": "fully_labeled",
+      "notes": "Anxiety detection dataset, binary labels, highly imbalanced (3712 positive, 5 negative)"
+    },
+    {
+      "file_path": "F:/sem8/mhealth-intake/data/processed/depression_clean.csv",
+      "file_type": "CSV",
+      "num_samples": 7650,
+      "available_labels": [0, 1],
+      "label_type": "binary_classification",
+      "labeled_status": "fully_labeled",
+      "notes": "Depression detection dataset, binary labels, balanced distribution (3889 negative, 3761 positive)"
+    },
+    {
+      "file_path": "F:/sem8/mhealth-intake/data/processed/anxiety_train.csv",
+      "file_type": "CSV",
+      "num_samples": 2973,
+      "available_labels": [0, 1],
+      "label_type": "binary_classification",
+      "labeled_status": "fully_labeled",
+      "notes": "Anxiety training split"
+    },
+    {
+      "file_path": "F:/sem8/mhealth-intake/data/processed/depression_train.csv",
+      "file_type": "CSV",
+      "num_samples": 6120,
+      "available_labels": [0, 1],
+      "label_type": "binary_classification",
+      "labeled_status": "fully_labeled",
+      "notes": "Depression training split"
+    }
+  ],
+  "label_definitions": {
+    "root_cause_labels": ["perfectionism", "lack_of_interest", "fear_of_failure", "environment_distraction", "dopamine_addiction", "overwhelmed"],
+    "source_file": "F:/sem8/mhealth-intake/rc_outputs/labels.json",
+    "notes": "6 root cause labels defined, but 'overwhelmed' excluded from modeling"
+  },
+  "unlabeled_text_sources": [
+    {
+      "file_path": "F:/sem8/mhealth-intake/prompts/intake_system.txt",
+      "file_type": "TXT",
+      "content_type": "system_prompt",
+      "labeled_status": "unlabeled",
+      "notes": "Intake system prompt template, no user data"
+    }
+  ],
+  "key_findings": {
+    "total_root_cause_samples": 60,
+    "total_mental_health_samples": 11367,
+    "additional_labeled_data_available": true,
+    "semi_supervised_potential": "high - 11,367 additional mental health samples available",
+    "data_quality_notes": [
+      "Anxiety dataset is severely imbalanced (99.9% positive)",
+      "Depression dataset is well balanced",
+      "Root cause dataset is small but clean with multi-label structure",
+      "No additional root cause labeled data found in legacy repository"
+    ]
+  },
+  "recommendations": {
+    "immediate_actions": [
+      "Proceed with current 60-sample root cause dataset for initial modeling",
+      "Consider data augmentation techniques for root cause dataset",
+      "Explore transfer learning from larger anxiety/depression datasets"
+    ],
+    "strategic_considerations": [
+      "Semi-supervised learning could leverage 11,367 additional mental health samples",
+      "Multi-task learning approach could benefit from related datasets",
+      "Data collection priority: expand root cause labeled samples"
+    ]
+  }
+}

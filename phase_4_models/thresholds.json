@@ -1,0 +1,16 @@
+{
+  "thresholds": {
+    "perfectionism": 0.6727119701066229,
+    "lack_of_interest": 0.6063394334629894,
+    "fear_of_failure": 0.4793853032301905,
+    "environment_distraction": 0.5678322472499514,
+    "dopamine_addiction": 0.5662598410805904
+  },
+  "val_f1": {
+    "perfectionism": 0.9090909090909091,
+    "lack_of_interest": 0.8888888888888888,
+    "fear_of_failure": 0.8571428571428571,
+    "environment_distraction": 0.8,
+    "dopamine_addiction": 0.7272727272727273
+  }
+}
