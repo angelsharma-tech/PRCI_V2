@@ -1,0 +1,96 @@
+{
+  "best": {
+    "epoch": 3,
+    "train_loss": 0.6355,
+    "dep": {
+      "acc": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "anx": {
+      "acc": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "avg_f1": 0.5
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.6915,
+      "dep": {
+        "acc": 0.5,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 1
+      },
+      "anx": {
+        "acc": 0.5,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 1
+      },
+      "avg_f1": 0.0
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.6684,
+      "dep": {
+        "acc": 0.5,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 1
+      },
+      "anx": {
+        "acc": 0.5,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 1
+      },
+      "avg_f1": 0.0
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.6355,
+      "dep": {
+        "acc": 0.5,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 1
+      },
+      "anx": {
+        "acc": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 1,
+        "fp": 0,
+        "fn": 0
+      },
+      "avg_f1": 0.5
+    }
+  ]
+}

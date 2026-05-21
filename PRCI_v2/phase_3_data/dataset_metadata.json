@@ -1,0 +1,108 @@
+{
+  "root_cause": {
+    "version": "v1.0",
+    "seed": 42,
+    "split_ratio": "70/15/15",
+    "total_samples": 60,
+    "label_distribution": {
+      "perfectionism": {
+        "count": 12,
+        "percentage": 20.0
+      },
+      "fear_of_failure": {
+        "count": 12,
+        "percentage": 20.0
+      },
+      "lack_of_interest": {
+        "count": 12,
+        "percentage": 20.0
+      },
+      "environment_distraction": {
+        "count": 12,
+        "percentage": 20.0
+      },
+      "dopamine_addiction": {
+        "count": 12,
+        "percentage": 20.0
+      }
+    },
+    "created_at": "2026-02-19T15:27:01.400796",
+    "splits": {
+      "train": {
+        "samples": 42,
+        "distribution": {
+          "perfectionism": {
+            "count": 8,
+            "percentage": 19.05
+          },
+          "fear_of_failure": {
+            "count": 8,
+            "percentage": 19.05
+          },
+          "lack_of_interest": {
+            "count": 9,
+            "percentage": 21.43
+          },
+          "environment_distraction": {
+            "count": 9,
+            "percentage": 21.43
+          },
+          "dopamine_addiction": {
+            "count": 8,
+            "percentage": 19.05
+          }
+        }
+      },
+      "val": {
+        "samples": 9,
+        "distribution": {
+          "perfectionism": {
+            "count": 2,
+            "percentage": 22.22
+          },
+          "fear_of_failure": {
+            "count": 2,
+            "percentage": 22.22
+          },
+          "lack_of_interest": {
+            "count": 1,
+            "percentage": 11.11
+          },
+          "environment_distraction": {
+            "count": 2,
+            "percentage": 22.22
+          },
+          "dopamine_addiction": {
+            "count": 2,
+            "percentage": 22.22
+          }
+        }
+      },
+      "test": {
+        "samples": 9,
+        "distribution": {
+          "perfectionism": {
+            "count": 2,
+            "percentage": 22.22
+          },
+          "fear_of_failure": {
+            "count": 2,
+            "percentage": 22.22
+          },
+          "lack_of_interest": {
+            "count": 2,
+            "percentage": 22.22
+          },
+          "environment_distraction": {
+            "count": 1,
+            "percentage": 11.11
+          },
+          "dopamine_addiction": {
+            "count": 2,
+            "percentage": 22.22
+          }
+        }
+      }
+    }
+  }
+}
