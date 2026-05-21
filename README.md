@@ -7,7 +7,7 @@ The system integrates machine learning, deep learning, and an interactive dashbo
 
 **Features**
 
-1. Dual-Head BERT Model : Predicts Depression and Anxiety scores
+1. Dual-Head BERT Model : Predicts Depression and Anxiety scores.
 2. Root Cause Detection : TF-IDF + Logistic Regression (multi-label) : DETECTS -> perfectionism, fear_of_failure, lack_of_interest, environment_distraction, dopamine_addiction
 3. Risk Engine : Calculates overall risk score -> Outputs: LOW / MODERATE / HIGH
 4. Interactive Dashboard: Built with Streamlit, Real-time analysis + charts
