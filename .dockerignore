@@ -1,0 +1,92 @@
+# =========================================================
+# PRCI v2 — Docker Build Context Ignore Rules
+# Phase 4.4 — Full Production Deployment & Dockerization
+# =========================================================
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# GitHub
+.github
+
+# Docker
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# Environment & Secrets
+.env
+.env.*
+!.env.example
+secrets/
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# IDEs / Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Documentation (not needed in container)
+docs/
+*.md
+!README.md
+
+# Logs
+logs/
+*.log
+
+# Local database files (use PostgreSQL in prod)
+*.db
+*.sqlite
+*.sqlite3
+
+# Backups
+backups/
+
+# Models / Large files
+*.pt
+*.pth
+*.onnx
+*.h5
+*.pb
+*.ckpt
+*.safetensors
+
+# Datasets (mount as volume if needed)
+datasets/
+phase_3_data/
+
+# Test artifacts
+tests/
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# CI/CD
+.github/
+.travis.yml
+.gitlab-ci.yml
+
+# Misc
+*.drawio
+*.drawio.svg
+*.drawio.png

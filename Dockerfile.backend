@@ -1,0 +1,78 @@
+# =========================================================
+# PRCI v2 — FastAPI Backend Dockerfile
+# Phase 4.4 — Full Production Deployment & Dockerization
+# =========================================================
+
+# ------------------------------------------------------------------
+# STAGE 1: Dependencies + Build
+# ------------------------------------------------------------------
+FROM python:3.11-slim AS builder
+
+# Prevent Python from writing pyc files and buffering stdout
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+# Install build dependencies (gcc for compiled Python packages)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create virtualenv so we can copy just the site-packages later
+RUN python -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+
+# Upgrade pip
+RUN pip install --no-cache-dir --upgrade pip setuptools wheel
+
+# Install all backend + shared dependencies
+COPY requirements.txt ./
+COPY requirements-backend.txt ./
+RUN pip install --no-cache-dir -r requirements.txt -r requirements-backend.txt
+
+# ------------------------------------------------------------------
+# STAGE 2: Production Runtime
+# ------------------------------------------------------------------
+FROM python:3.11-slim AS production
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONPATH=/app
+
+# Runtime-only system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libpq5 \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy virtualenv from builder
+COPY --from=builder /opt/venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+
+# App working directory
+WORKDIR /app
+
+# Copy entire application code
+COPY PRCI_v2/ ./
+
+# Create non-root user for security
+RUN groupadd -r prci && useradd -r -g prci prci \
+    && chown -R prci:prci /app
+USER prci
+
+# Expose FastAPI port
+EXPOSE 8000
+
+# Healthcheck (FastAPI health endpoint)
+HEALTHCHECK --interval=30s --timeout=10s --start-period=15s --retries=3 \
+    CMD curl -fs http://localhost:8000/health/live || exit 1
+
+# Production server: 4 workers, Uvicorn behind gunicorn
+CMD ["gunicorn", "api.main:app", \
+     "--worker-class", "uvicorn.workers.UvicornWorker", \
+     "--workers", "4", \
+     "--bind", "0.0.0.0:8000", \
+     "--access-logfile", "-", \
+     "--error-logfile", "-", \
+     "--capture-output", \
+     "--enable-stdio-inheritance"]

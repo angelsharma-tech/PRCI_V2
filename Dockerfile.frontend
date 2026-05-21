@@ -1,0 +1,52 @@
+# =========================================================
+# PRCI v2 — Streamlit Frontend Dockerfile
+# Phase 4.4 — Full Production Deployment & Dockerization
+# =========================================================
+
+FROM python:3.11-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONPATH=/app
+
+# Install runtime system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libpq5 \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Upgrade pip
+RUN pip install --no-cache-dir --upgrade pip setuptools wheel
+
+# Install frontend + shared dependencies
+COPY requirements.txt ./
+COPY requirements-backend.txt ./
+RUN pip install --no-cache-dir -r requirements.txt -r requirements-backend.txt
+
+# App working directory
+WORKDIR /app
+
+# Copy application code
+COPY PRCI_v2/ ./
+
+# Non-root user for security
+RUN groupadd -r prci && useradd -r -g prci prci \
+    && chown -R prci:prci /app
+USER prci
+
+# Streamlit default port
+EXPOSE 8501
+
+# Healthcheck (Streamlit is alive)
+HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
+    CMD curl -fs http://localhost:8501/_stcore/health || exit 1
+
+# Production Streamlit settings via CLI flags
+CMD ["streamlit", "run", "app_upgrade.py", \
+     "--server.port=8501", \
+     "--server.address=0.0.0.0", \
+     "--server.headless=true", \
+     "--server.enableCORS=false", \
+     "--server.enableXsrfProtection=false", \
+     "--browser.gatherUsageStats=false", \
+     "--logger.level=info"]
